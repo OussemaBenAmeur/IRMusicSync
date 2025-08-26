@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp"
+              android:background="@color/black">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎵 IR Music Sync Pro"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Initializing..."
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="@drawable/rounded_background"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/frequencyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Audio Analysis: Ready"
+        android:textSize="14sp"
+        android:textColor="@color/light_blue"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/rounded_background_secondary"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎨 Animation Mode"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/animationSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/spinner_background"
+        android:popupBackground="@color/dark_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🌈 Color Mode"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/colorModeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/spinner_background"
+        android:popupBackground="@color/dark_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎚️ Sensitivity"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <SeekBar
+        android:id="@+id/sensitivitySeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="@color/accent_color"
+        android:thumbTint="@color/accent_color"
+        android:layout_marginBottom="24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="🚀 Start Sync"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/start_button_background"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="⏹️ Stop"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/stop_button_background"
+            android:textColor="@color/white"
+            android:enabled="false" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✨ Features:\n• Beat Detection\n• Frequency Analysis\n• Smart Color Mapping\n• Multi-Mode Animations\n• Brightness Control\n• Real-time Sync"
+            android:textSize="12sp"
+            android:textColor="@color/light_gray"
+            android:padding="12dp"
+            android:background="@drawable/info_background"
+            android:lineSpacingExtra="2dp" />
+
+        </LinearLayout>
