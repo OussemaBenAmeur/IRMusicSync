@@ -75,8 +75,3 @@ Or open the project in Android Studio and run it on a physical device with an IR
 - The app uses microphone input, not direct internal audio capture.
 - Different LED controllers can respond a little differently depending on their IR command set.
 - It works best when the phone has a clear line of sight to the controller.
-
-## Author
-
-Oussema Ben Ameur  
-GitHub: [@OussemaBenAmeur](https://github.com/OussemaBenAmeur)
