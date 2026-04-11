@@ -1,10 +1,12 @@
 package com.example.irmusicsync
 
 import android.hardware.ConsumerIrManager
+import android.util.Log
 
 class IRController(private val irManager: ConsumerIrManager) {
     companion object {
         private const val CARRIER_FREQUENCY = 38000 // 38kHz carrier frequency
+        private const val TAG = "IRController"
     }
 
     // IR patterns for all available colors
@@ -216,69 +218,57 @@ class IRController(private val irManager: ConsumerIrManager) {
         650
     )
 
+    private val colorPatterns = mapOf(
+        IRCommand.Color.OFF to OFF_PATTERN,
+        IRCommand.Color.RED to RED_PATTERN,
+        IRCommand.Color.GREEN to GREEN_PATTERN,
+        IRCommand.Color.BLUE to BLUE_PATTERN,
+        IRCommand.Color.WHITE to WHITE_PATTERN,
+        IRCommand.Color.LIGHT_GREEN to LIGHT_GREEN_PATTERN,
+        IRCommand.Color.VERY_LIGHT_GREEN to VERY_LIGHT_GREEN_PATTERN,
+        IRCommand.Color.TURQUOISE to TURQUOISE_PATTERN,
+        IRCommand.Color.ORANGE to ORANGE_PATTERN,
+        IRCommand.Color.YELLOW to YELLOW_PATTERN,
+        IRCommand.Color.PURPLE to PURPLE_PATTERN,
+        IRCommand.Color.LIGHT_PURPLE to LIGHT_PURPLE_PATTERN,
+        IRCommand.Color.PINK to PINK_PATTERN
+    )
+
     fun sendCommand(command: IRCommand) {
-        val pattern = getPatternForCommand(command)
-        pattern?.let {
-            try {
-                irManager.transmit(CARRIER_FREQUENCY, it)
-                println("IR Signal sent: ${command.color}")
-            } catch (e: Exception) {
-                println("IR Transmission failed: ${e.message}")
-            }
-        }
-    }
-
-    private fun getPatternForCommand(command: IRCommand): IntArray? {
-        return when (command.color) {
-            IRCommand.Color.RED -> RED_PATTERN
-            IRCommand.Color.GREEN -> GREEN_PATTERN
-            IRCommand.Color.BLUE -> BLUE_PATTERN
-            IRCommand.Color.WHITE -> WHITE_PATTERN
-            IRCommand.Color.LIGHT_GREEN -> LIGHT_GREEN_PATTERN
-            IRCommand.Color.VERY_LIGHT_GREEN -> VERY_LIGHT_GREEN_PATTERN
-            IRCommand.Color.TURQUOISE -> TURQUOISE_PATTERN
-            IRCommand.Color.ORANGE -> ORANGE_PATTERN
-            IRCommand.Color.YELLOW -> YELLOW_PATTERN
-            IRCommand.Color.PURPLE -> PURPLE_PATTERN
-            IRCommand.Color.LIGHT_PURPLE -> LIGHT_PURPLE_PATTERN
-            IRCommand.Color.PINK -> PINK_PATTERN
-
-            else -> null
-        }
+        val pattern = colorPatterns[command.color] ?: return
+        transmitPattern(pattern, "IR signal sent: ${command.color}")
     }
 
     // Additional control methods
     fun brightnessUp() {
-        try {
-            irManager.transmit(CARRIER_FREQUENCY, BRIGHTNESS_UP_PATTERN)
-            println("Brightness up signal sent")
-        } catch (e: Exception) {
-            println("Brightness up failed: ${e.message}")
-        }
+        transmitPattern(BRIGHTNESS_UP_PATTERN, "Brightness up signal sent")
     }
 
     fun brightnessDown() {
-        try {
-            irManager.transmit(CARRIER_FREQUENCY, BRIGHTNESS_DOWN_PATTERN)
-            println("Brightness down signal sent")
-        } catch (e: Exception) {
-            println("Brightness down failed: ${e.message}")
-        }
+        transmitPattern(BRIGHTNESS_DOWN_PATTERN, "Brightness down signal sent")
     }
 
     // Send a sequence of colors for smooth transitions
     fun sendColorSequence(colors: List<IRCommand.Color>, delayMs: Long = 150) {
         Thread {
             colors.forEach { color ->
-                val command = IRCommand().apply { this.color = color }
-                sendCommand(command)
+                sendCommand(IRCommand(color))
                 try {
                     Thread.sleep(delayMs)
-                } catch (e: InterruptedException) {
+                } catch (exception: InterruptedException) {
                     Thread.currentThread().interrupt()
                     return@Thread
                 }
             }
         }.start()
+    }
+
+    private fun transmitPattern(pattern: IntArray, successMessage: String) {
+        try {
+            irManager.transmit(CARRIER_FREQUENCY, pattern)
+            Log.d(TAG, successMessage)
+        } catch (exception: Exception) {
+            Log.e(TAG, "IR transmission failed", exception)
+        }
     }
 }

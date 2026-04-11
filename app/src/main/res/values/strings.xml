@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">IR Music Sync</string>
+    <string name="title_app">IR Music Sync</string>
+    <string name="subtitle_app">Microphone-driven color sync for IR LED strips</string>
+    <string name="label_mode">Mode</string>
+    <string name="label_palette">Palette</string>
+    <string name="label_sensitivity">Sensitivity</string>
+    <string name="action_start_sync">Start</string>
+    <string name="action_stop">Stop</string>
+    <string name="status_initializing">Initializing...</string>
+    <string name="status_no_ir">No IR blaster found on this device.</string>
+    <string name="status_ready">Ready. Point the phone at the controller and press Start.</string>
+    <string name="status_unsupported_frequency">This device does not support the required 38kHz IR frequency.</string>
+    <string name="status_active">Listening for music...</string>
+    <string name="status_running">%1$s | %2$s | %3$d BPM</string>
+    <string name="status_stopped">Stopped. Ready for another track.</string>
+    <string name="analysis_ready">Waiting for audio analysis.</string>
+    <string name="analysis_waiting">Listening for the first clean signal...</string>
+    <string name="analysis_idle">Bass / mid / high balance will appear here.</string>
+    <string name="analysis_metrics">Bass %1$d%% | Mid %2$d%% | High %3$d%% | %4$d Hz</string>
+    <string name="beat_state_hit">Beat</string>
+    <string name="beat_state_listening">Listening</string>
+    <string name="mode_recommendation">Best with: %1$s</string>
+    <string name="mode_recommendation_placeholder">Best with: house, disco edits, fast pop</string>
+    <string name="toast_ir_not_ready">IR blaster is not ready.</string>
+    <string name="toast_microphone_permission_required">Microphone permission is required.</string>
+    <string name="toast_audio_init_failed">Failed to initialize audio recording.</string>
+    <string name="toast_start_failed">Failed to start sync: %1$s</string>
+    <string name="toast_permission_granted">Microphone access granted.</string>
+    <string name="toast_permission_denied">Microphone permission is required to use the app.</string>
 </resources>
