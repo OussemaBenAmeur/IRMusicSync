@@ -1,8 +1,18 @@
 # IRMusicSync
 
+<p align="center">
+  <img src="docs/images/app-icon.svg" alt="IRMusicSync app icon" width="120" />
+</p>
+
 I was bored in the summer and decided to make a party in my room, so I ended up making this app.
 
 IRMusicSync is an Android app that listens to music through the phone microphone and sends infrared color commands to an LED strip controller. The phone becomes a small audio-reactive remote: point it at the controller, play music, and the lights follow the track.
+
+## Preview
+
+<p align="center">
+  <img src="docs/images/app-screenshot.jpeg" alt="IRMusicSync app screenshot" width="320" />
+</p>
 
 ## What the app does
 
